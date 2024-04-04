@@ -24,14 +24,14 @@ public class HospitalApplication  {
  @Bean
  CommandLineRunner start(IhospitalService hospitalService,PatientRepository patientRepository,RendezVousRepository rendezVousRepository,ConsultationRepository consultationRepository,MedecinRepository medecinRepository){
         return args -> {
-            Stream.of("Younesse","mustapha","zakaria").forEach(name->{
+            Stream.of("sara","hajar","faty").forEach(name->{
                 Patient patient = new Patient();
                 patient.setNom(name);
                 patient.setDateNaissance(new Date());
                 patient.setMalade(false);
                 hospitalService.savePatient(patient);
             });
-            Stream.of("yahya","mohamed","reeda").forEach(name->{
+            Stream.of("oumaima","rosa","faty").forEach(name->{
                 Medecin medecin = new Medecin();
                 medecin.setNom(name);
                 medecin.setEmail(name+"@gmail.com");
@@ -40,8 +40,8 @@ public class HospitalApplication  {
                hospitalService.saveMedecin(medecin) ;
             });
             Patient patient=patientRepository.findById(1L).orElse(null);
-            Patient patient1=patientRepository.findByNom("mustapha");
-            Medecin medecin=medecinRepository.findByNom("reeda");
+            Patient patient1=patientRepository.findByNom("hajar");
+            Medecin medecin=medecinRepository.findByNom("faty");
             Rendez_Vous rendezVous=new Rendez_Vous();
             rendezVous.setDate(new Date());
             rendezVous.setStatus(StatusRDV.PENDING);
